@@ -54,6 +54,7 @@ async function createIssue(env, name, phone, request) {
     "",
     `- Name: ${name}`,
     `- Phone number: ${phone}`,
+    `- Email: ${email}`,
     `- Submitted at: ${new Date().toISOString()}`,
     `- Source country: ${sourceCountry}`,
     "",
@@ -111,13 +112,14 @@ export default {
 
       const name = String(data.name || "").trim();
       const phone = cleanPhone(data.phone);
-      const error = validate(name, phone);
+      const email = String(data.email || "").trim();
+      const error = validate(name, phone, email);
 
       if (error) {
         return jsonResponse(request, env, { ok: false, message: error }, 400);
       }
 
-      const issue = await createIssue(env, name, phone, request);
+      const issue = await createIssue(env, name, phone, email, request);
       return jsonResponse(request, env, {
         ok: true,
         issueUrl: issue.html_url
