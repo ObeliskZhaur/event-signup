@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>活动报名</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero" aria-label="报名表">
+        <div class="hero-art" aria-hidden="true">
+          <div class="ticket">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <div class="signup-panel">
+          <p class="eyebrow">Registration</p>
+          <h1>活动报名</h1>
+          <p class="intro">填写姓名和电话号码后提交，报名记录会安全进入私有数据仓库。</p>
+
+          <form id="signupForm" novalidate>
+            <label>
+              <span>姓名</span>
+              <input id="name" name="name" type="text" autocomplete="name" required maxlength="40" placeholder="请输入姓名">
+            </label>
+
+            <label>
+              <span>电话号码</span>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="请输入电话号码">
+            </label>
+
+            <label class="website-field" aria-hidden="true">
+              <span>网站</span>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </label>
+
+            <p id="message" class="message" role="status" aria-live="polite"></p>
+
+            <button id="submitButton" type="submit">提交报名</button>
+          </form>
+
+          <details class="settings">
+            <summary>接口设置</summary>
+            <div class="settings-grid">
+              <label>
+                <span>报名接口地址</span>
+                <input id="apiUrl" type="url" placeholder="例如 https://signup-api.your-name.workers.dev">
+              </label>
+              <button id="saveSettings" type="button">保存设置</button>
+            </div>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
