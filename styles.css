@@ -201,6 +201,11 @@ button:hover {
   background: var(--accent-dark);
 }
 
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.68;
+}
+
 .message {
   min-height: 1.4em;
   margin: 0;
@@ -219,11 +224,6 @@ button:hover {
   width: 1px;
   height: 1px;
   overflow: hidden;
-}
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.68;
 }
 
 .settings {
