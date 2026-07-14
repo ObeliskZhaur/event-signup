@@ -156,8 +156,7 @@ h1 {
   line-height: 1.7;
 }
 
-form,
-.settings-grid {
+form {
   display: grid;
   gap: 16px;
 }
@@ -224,27 +223,6 @@ button:disabled {
   width: 1px;
   height: 1px;
   overflow: hidden;
-}
-
-.settings {
-  margin-top: 24px;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-}
-
-.settings summary {
-  width: fit-content;
-  color: var(--muted);
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.settings-grid {
-  margin-top: 16px;
-}
-
-.settings-grid button {
-  background: #14213d;
 }
 
 @media (max-width: 760px) {

@@ -72,9 +72,11 @@ Open `script.js` and set the Worker URL:
 
 ```js
 const CONFIG = {
-  apiUrl: "https://signup-api.your-name.workers.dev"
+  registrationEndpoint: "https://signup-api.your-name.workers.dev"
 };
 ```
+
+Visitors only see the name field, phone number field, and submit button.
 
 ### 5. Publish with GitHub Pages
 
