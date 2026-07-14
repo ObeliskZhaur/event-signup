@@ -1,5 +1,5 @@
 const CONFIG = {
-  apiUrl: "YOUR_BACKEND_API_URL"
+  registrationEndpoint: "YOUR_WORKER_URL"
 };
 
 const fields = {
@@ -8,14 +8,8 @@ const fields = {
   phone: document.querySelector("#phone"),
   website: document.querySelector("#website"),
   message: document.querySelector("#message"),
-  apiUrl: document.querySelector("#apiUrl"),
-  saveSettings: document.querySelector("#saveSettings"),
   submitButton: document.querySelector("#submitButton")
 };
-
-function getApiUrl() {
-  return localStorage.getItem("signupApiUrl") || CONFIG.apiUrl;
-}
 
 function setMessage(text, ok = false) {
   fields.message.textContent = text;
@@ -39,18 +33,11 @@ function validate(name, phone) {
   return "";
 }
 
-function loadSettings() {
-  const apiUrl = getApiUrl();
-  fields.apiUrl.value = apiUrl === CONFIG.apiUrl ? "" : apiUrl;
-}
-
 fields.form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const apiUrl = getApiUrl();
-  if (apiUrl === CONFIG.apiUrl) {
-    setMessage("Please enter the registration API URL in API settings first.");
-    document.querySelector(".settings").open = true;
+  if (CONFIG.registrationEndpoint === "YOUR_WORKER_URL") {
+    setMessage("Registration service is not configured yet.");
     return;
   }
 
@@ -68,7 +55,7 @@ fields.form.addEventListener("submit", async (event) => {
   setMessage("Submitting your registration...", true);
 
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch(CONFIG.registrationEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -95,17 +82,3 @@ fields.form.addEventListener("submit", async (event) => {
     fields.submitButton.textContent = "Submit registration";
   }
 });
-
-fields.saveSettings.addEventListener("click", () => {
-  const apiUrl = fields.apiUrl.value.trim();
-
-  if (!apiUrl) {
-    setMessage("Please enter the registration API URL.");
-    return;
-  }
-
-  localStorage.setItem("signupApiUrl", apiUrl);
-  setMessage("Settings saved. You can submit registrations now.", true);
-});
-
-loadSettings();
