@@ -5,4 +5,4 @@ compatibility_date = "2026-07-14"
 [vars]
 PRIVATE_DATA_REPO_OWNER = "ObeliskZhaur"
 PRIVATE_DATA_REPO_NAME = "event-signup-data"
-PAGES_ORIGIN = "https://https://obeliskzhaur.github.io"
+PAGES_ORIGIN = "https://obeliskzhaur.github.io"
