@@ -3,6 +3,6 @@ main = "cloudflare-worker.js"
 compatibility_date = "2026-07-14"
 
 [vars]
-PRIVATE_DATA_REPO_OWNER = "YOUR_GITHUB_USERNAME_OR_ORG"
-PRIVATE_DATA_REPO_NAME = "YOUR_PRIVATE_DATA_REPOSITORY"
-PAGES_ORIGIN = "https://YOUR_GITHUB_USERNAME.github.io"
++PRIVATE_DATA_REPO_OWNER = "ObliskZhaur"
++PRIVATE_DATA_REPO_NAME = "event-signup-data"
++PAGES_ORIGIN = "https://ObliskZhaur.github.io"
