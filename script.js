@@ -28,12 +28,12 @@ function normalizePhone(value) {
 
 function validate(name, phone) {
   if (name.length < 2) {
-    return "请填写至少 2 个字的姓名。";
+    return "Please enter a name with at least 2 characters.";
   }
 
   const digits = phone.replace(/\D/g, "");
   if (digits.length < 7) {
-    return "请填写有效的电话号码。";
+    return "Please enter a valid phone number.";
   }
 
   return "";
@@ -49,7 +49,7 @@ fields.form.addEventListener("submit", async (event) => {
 
   const apiUrl = getApiUrl();
   if (apiUrl === CONFIG.apiUrl) {
-    setMessage("请先在接口设置中填写报名接口地址。");
+    setMessage("Please enter the registration API URL in API settings first.");
     document.querySelector(".settings").open = true;
     return;
   }
@@ -64,8 +64,8 @@ fields.form.addEventListener("submit", async (event) => {
   }
 
   fields.submitButton.disabled = true;
-  fields.submitButton.textContent = "正在提交...";
-  setMessage("正在提交报名...", true);
+  fields.submitButton.textContent = "Submitting...";
+  setMessage("Submitting your registration...", true);
 
   try {
     const response = await fetch(apiUrl, {
@@ -83,16 +83,16 @@ fields.form.addEventListener("submit", async (event) => {
     const result = await response.json().catch(() => ({}));
 
     if (!response.ok || !result.ok) {
-      throw new Error(result.message || "提交失败，请稍后再试。");
+      throw new Error(result.message || "Submission failed. Please try again later.");
     }
 
     fields.form.reset();
-    setMessage("报名成功！我们已经收到你的信息。", true);
+    setMessage("Registration received. Thank you!", true);
   } catch (error) {
-    setMessage(error.message || "提交失败，请稍后再试。");
+    setMessage(error.message || "Submission failed. Please try again later.");
   } finally {
     fields.submitButton.disabled = false;
-    fields.submitButton.textContent = "提交报名";
+    fields.submitButton.textContent = "Submit registration";
   }
 });
 
@@ -100,12 +100,12 @@ fields.saveSettings.addEventListener("click", () => {
   const apiUrl = fields.apiUrl.value.trim();
 
   if (!apiUrl) {
-    setMessage("请填写报名接口地址。");
+    setMessage("Please enter the registration API URL.");
     return;
   }
 
   localStorage.setItem("signupApiUrl", apiUrl);
-  setMessage("设置已保存，可以提交报名了。", true);
+  setMessage("Settings saved. You can submit registrations now.", true);
 });
 
 loadSettings();
