@@ -1,5 +1,5 @@
 const CONFIG = {
-  registrationEndpoint: "YOUR_WORKER_URL"
+  registrationEndpoint: "https://event-signup-api.mo8095321.workers.dev"
 };
 
 const fields = {
